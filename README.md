@@ -1,7 +1,5 @@
 # Multivariate Distribution Hypothesis Test (MDHT) (2017.9.13 v.02)
 
-[TOC]
-
 ## 1. 问题表述
 
 ### 1.1 背景
@@ -18,18 +16,11 @@
 
 ### 1.3 抽象化
 
-data set A & B ,
-$$
-A \in R^{n\times p}, B \in R^{m\times p}.
-$$
+data set ![](http://chart.googleapis.com/chart?cht=tx&chl=A) & ![](http://chart.googleapis.com/chart?cht=tx&chl=B) , where ![](http://chart.googleapis.com/chart?cht=tx&chl=A\\in{R^{n\\times_p}}) and ![](http://chart.googleapis.com/chart?cht=tx&chl=B\\in{R^{m\\times_p}}).
 
-$$
-A = \begin{matrix} a_{11}&a_{12}&\cdots&a_{1p}\\ a_{21}&a_{22}&\cdots&a_{2p}\\ \vdots & \vdots&\ddots&\vdots\\      a_{n1}&a_{n2}&\cdots&a_{np}\\   \end{matrix}
-$$
+![](http://chart.googleapis.com/chart?cht=tx&chl=\\Large%20A=\\begin{matrix}%20a_{11}%26a_{12}%26\\cdots%26a_{1p}\\\a_{21}%26a_{22}%26\\cdots%26a_{2p}\\\\%20\\vdots%26\\vdots%26\\ddots%26\\vdots\\\\%20a_{n1}%26a_{n2}%26\\cdots%26a_{np}\\\%20\\end{matrix})
 
-$$
-B = \begin{matrix} b_{11}&b_{12}&\cdots&b_{1p}\\ b_{21}&b_{22}&\cdots&b_{2p}\\ \vdots & \vdots&\ddots&\vdots\\      b_{m1}&b_{m2}&\cdots&b_{mp}\\   \end{matrix}
-$$
+![](http://chart.googleapis.com/chart?cht=tx&chl=\\Large%20B=\\begin{matrix}%20b_{11}%26b_{12}%26\\cdots%26b_{1p}\\\b_{21}%26b_{22}%26\\cdots%26b_{2p}\\\\%20\\vdots%26\\vdots%26\\ddots%26\\vdots\\\\%20b_{m1}%26b_{m2}%26\\cdots%26b_{mp}\\\%20\\end{matrix})
 
 ### 1.4 数据来源
 
@@ -47,9 +38,11 @@ $$
 
 ### 2.1 Combine two matrices into one matrix C
 
-$$
-C = \left[\begin{matrix} A\\—\\B\\ \end{matrix}\right] =  \begin{matrix} a_{11}&a_{12}&\cdots&a_{1p}\\ a_{21}&a_{22}&\cdots&a_{2p}\\ \vdots & \vdots&\ddots&\vdots\\      a_{n1}&a_{n2}&\cdots&a_{np}\\  b_{11}&b_{12}&\cdots&b_{1p}\\ b_{21}&b_{22}&\cdots&b_{2p}\\ \vdots & \vdots&\ddots&\vdots\\      b_{m1}&b_{m2}&\cdots&b_{mp}\\  \end{matrix}
-$$
+
+![](http://chart.googleapis.com/chart?cht=tx&chl=\\Large%20C=\\left[\\begin{matrix}%20A\\\\%20\\\\%20B\\end{matrix}\\right]=\\begin{matrix}%20a_{11}%26a_{12}%26\\cdots%26a_{1p}\\\\%20\\vdots%26\\vdots%26\\ddots%26\\vdots\\\\%20a_{n1}%26a_{n2}%26\\cdots%26a_{np}\\\\%20b_{11}%26b_{12}%26\\cdots%26b_{1p}\\\\%20\\vdots%26\\vdots%26\\ddots%26\\vdots\\\\%20b_{m1}%26b_{m2}%26\\cdots%26b_{mp}\\\\%20\\end{matrix})
+
+![](http://chart.googleapis.com/chart?cht=tx&chl=\\Large%20C=\\left[\\begin{matrix}%20A\\\\%20\\\\%20B\\end{matrix}\\right]=\\begin{matrix}%20a_{11}%26a_{12}%26\\cdots%26a_{1p}\\\\%20a_{21}%26a_{22}%26\\cdots%26a_{2p}\\\\%20\\vdots%26\\vdots%26\\ddots%26\\vdots\\\\%20a_{n1}%26a_{n2}%26\\cdots%26a_{np}\\\\%20b_{11}%26b_{12}%26\\cdots%26b_{1p}\\\\%20b_{21}%26b_{22}%26\\cdots%26b_{2p}\\\\%20\\vdots%26 \\vdots%26\\ddots%26\\vdots\\\\%20b_{m1}%26b_{m2}%26\\cdots%26b_{mp}\\\\%20\\end{matrix})
+
 
 ### 2.2 K-means Clustering based on matrix C
 
