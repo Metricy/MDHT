@@ -55,7 +55,7 @@ $$
 
 ### k-means clustering plot and (from matlab)
 
-![right_sample.png]
+![right_sample](right_sample.png)
 
 
 
@@ -91,7 +91,7 @@ plot(1:10,num_B,'r')
 
 ***
 
-![wrong_sample.png]
+![wrong_sample](wrong_sample.png)
 
 ```Matlab
 % for two sample is clearly different
