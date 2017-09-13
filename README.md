@@ -37,12 +37,10 @@ data set ![](http://chart.googleapis.com/chart?cht=tx&chl=A) & ![](http://chart.
 
 
 ### 2.1 Combine two matrices into one matrix C
+Let ![](http://chart.googleapis.com/chart?cht=tx&chl=\\Large%20C=\\Large%20\\left[\\begin{matrix}%20A\\\\%20\\\\%20B\\end{matrix}\\right]), which is
 
-
-![](http://chart.googleapis.com/chart?cht=tx&chl=\\Large%20C=\\left[\\begin{matrix}%20A\\\\%20\\\\%20B\\end{matrix}\\right]=\\begin{matrix}%20a_{11}%26a_{12}%26\\cdots%26a_{1p}\\\\%20\\vdots%26\\vdots%26\\ddots%26\\vdots\\\\%20a_{n1}%26a_{n2}%26\\cdots%26a_{np}\\\\%20b_{11}%26b_{12}%26\\cdots%26b_{1p}\\\\%20\\vdots%26\\vdots%26\\ddots%26\\vdots\\\\%20b_{m1}%26b_{m2}%26\\cdots%26b_{mp}\\\\%20\\end{matrix})
-
-![](http://chart.googleapis.com/chart?cht=tx&chl=\\Large%20C=\\left[\\begin{matrix}%20A\\\\%20\\\\%20B\\end{matrix}\\right]=\\begin{matrix}%20a_{11}%26a_{12}%26\\cdots%26a_{1p}\\\\%20a_{21}%26a_{22}%26\\cdots%26a_{2p}\\\\%20\\vdots%26\\vdots%26\\ddots%26\\vdots\\\\%20a_{n1}%26a_{n2}%26\\cdots%26a_{np}\\\\%20b_{11}%26b_{12}%26\\cdots%26b_{1p}\\\\%20b_{21}%26b_{22}%26\\cdots%26b_{2p}\\\\%20\\vdots%26 \\vdots%26\\ddots%26\\vdots\\\\%20b_{m1}%26b_{m2}%26\\cdots%26b_{mp}\\\\%20\\end{matrix})
-
+![](http://chart.googleapis.com/chart?cht=tx&chl=\\Large%20\\begin{matrix}%20a_{11}%26a_{12}%26\\cdots%26a_{1p}\\\\%20\\vdots%26\\vdots%26\\ddots%26\\vdots\\\\%20a_{n1}%26a_{n2}%26\\cdots%26a_{np}\\\\%20\\end{matrix})<br/>
+![](http://chart.googleapis.com/chart?cht=tx&chl=\\Large%20\\begin{matrix}%20b_{11}%26b_{12}%26\\cdots%26b_{1p}\\\\%20\\vdots%26\\vdots%26\\ddots%26\\vdots\\\\%20b_{m1}%26b_{m2}%26\\cdots%26b_{mp}\\\\%20\\end{matrix})
 
 ### 2.2 K-means Clustering based on matrix C
 
