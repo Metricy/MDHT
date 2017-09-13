@@ -18,17 +18,18 @@
 
 ### 1.3 抽象化
 
-​	data set A & B , A $\in$ $R^{n\times p}$ ; B $\in$ $R^{m\times p}$
+data set A & B ,
+$$
+A \in R^{n\times p}, B \in R^{m\times p}.
+$$
 
+$$
+A = \begin{matrix} a_{11}&a_{12}&\cdots&a_{1p}\\ a_{21}&a_{22}&\cdots&a_{2p}\\ \vdots & \vdots&\ddots&\vdots\\      a_{n1}&a_{n2}&\cdots&a_{np}\\   \end{matrix}
+$$
 
-
-
-
-​	A = $\begin{matrix} a_{11}&a_{12}&\cdots&a_{1p}\\ a_{21}&a_{22}&\cdots&a_{2p}\\ \vdots & \vdots&\ddots&\vdots\\      a_{n1}&a_{n2}&\cdots&a_{np}\\   \end{matrix}$
-
-
-
-​	B = $\begin{matrix} b_{11}&b_{12}&\cdots&b_{1p}\\ b_{21}&b_{22}&\cdots&b_{2p}\\ \vdots & \vdots&\ddots&\vdots\\      b_{m1}&b_{m2}&\cdots&b_{mp}\\   \end{matrix}$
+$$
+B = \begin{matrix} b_{11}&b_{12}&\cdots&b_{1p}\\ b_{21}&b_{22}&\cdots&b_{2p}\\ \vdots & \vdots&\ddots&\vdots\\      b_{m1}&b_{m2}&\cdots&b_{mp}\\   \end{matrix}
+$$
 
 ### 1.4 数据来源
 
@@ -46,7 +47,9 @@
 
 ### 2.1 Combine two matrices into one matrix C
 
-C = $\begin{matrix} A\\—\\B\\ \end{matrix}$ = $ \begin{matrix} a_{11}&a_{12}&\cdots&a_{1p}\\ a_{21}&a_{22}&\cdots&a_{2p}\\ \vdots & \vdots&\ddots&\vdots\\      a_{n1}&a_{n2}&\cdots&a_{np}\\  b_{11}&b_{12}&\cdots&b_{1p}\\ b_{21}&b_{22}&\cdots&b_{2p}\\ \vdots & \vdots&\ddots&\vdots\\      b_{m1}&b_{m2}&\cdots&b_{mp}\\  \end{matrix}$
+$$
+C = \left[\begin{matrix} A\\—\\B\\ \end{matrix}\right] =  \begin{matrix} a_{11}&a_{12}&\cdots&a_{1p}\\ a_{21}&a_{22}&\cdots&a_{2p}\\ \vdots & \vdots&\ddots&\vdots\\      a_{n1}&a_{n2}&\cdots&a_{np}\\  b_{11}&b_{12}&\cdots&b_{1p}\\ b_{21}&b_{22}&\cdots&b_{2p}\\ \vdots & \vdots&\ddots&\vdots\\      b_{m1}&b_{m2}&\cdots&b_{mp}\\  \end{matrix}
+$$
 
 ### 2.2 K-means Clustering based on matrix C
 
