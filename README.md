@@ -120,7 +120,7 @@ plot(1:10,num_B,'r')
 
 
 ### 2.3 建立chi-square test
-
+TBA
 
 
 

@@ -19,6 +19,6 @@ end
 
 num_A = num_A/300;
 num_B = num_B/700;
-plot(1:10,num_A)
+plot(1:k,num_A)
 hold on
-plot(1:10,num_B,'r')
+plot(1:k,num_B,'r')
