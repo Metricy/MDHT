@@ -1,5 +1,5 @@
 source("simulate.R")
-source("KS_pvalue.R")
+source("supplement.R")
 set.seed(1)
 
 sep_ratio <- 0.65
@@ -12,16 +12,16 @@ reject_ratio = rep(0, test_times)
 
 for (i in 1:test_times){
   # origin p-value fake this time
-  p_0 <- KS_pvalue_fake(people, sep_ratio, train_ratio)
+  p_0 <- KS_pvalue(people, sep_ratio, train_ratio, TRUE)
   
   # bootstrap
   p_value <- c()
   for (j in 1:bootstrap_times){
-    p_value[j] <- KS_pvalue(people, sep_ratio, train_ratio)
+    p_value[j] <- KS_pvalue(people, sep_ratio, train_ratio, FALSE)
   }
   
   #hist(p_value)
-  quant <- quantile(p_value,c(0.95))
+  quant <- quantile(p_value,c(0.05))
   reject_ratio[i] <-  p_0<=quant
 }
 print(mean(reject_ratio))
