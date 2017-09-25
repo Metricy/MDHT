@@ -23,14 +23,13 @@ for(f in 1:num_sim){
     chi_sqr<-c(chi_sqr,Q(list(A[,i],B[,i]),lo=20,up=80,sep=20))}
   n<-test(20,80,20,chi_sqr)
   
-  # Check minimum values of p-values if want to
-  min_p_values<-c(min_p_values,n[[1]])
-  
   # Check number of NAs generated in each trial if necessary
   Na<-c(Na,sum(is.na(chi_sqr)))
   
   # Judging whether to reject H0
   if(n[[2]]=='Holm`s step-down'){
+    # Check minimum values of p-values if want to
+    min_p_values<-c(min_p_values,n[[1]])
     if(n[[1]]<=(0.05/(type_number-sum(is.na(chi_sqr))))){rej[f]=1}
   }
   if(n[[2]]=='Hochberg`s step-up'){
