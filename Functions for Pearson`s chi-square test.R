@@ -9,7 +9,7 @@ edf<-function(x,draw=F){
   if(draw){plot(sort(x),Fn_x,ylab='Fn(x)')}
   return(Fn_x)}
 
-# Calcularion of expectations of counts in each category.
+# Calculation of expectations of counts in each category.
 estimates<-function(x,lo,up,sep){
   expts<-c()
   expt<-length(x[x<lo])/length(x)
