@@ -9,7 +9,7 @@ source('Functions for Pearson`s chi-square test.R')
 
 
 ### Main entry ###
-
+set.seed(1)
 for(f in 1:num_sim){
 
   # Data generation
