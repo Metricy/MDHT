@@ -1,5 +1,5 @@
 library(MASS)
-num_sim<-100
+num_sim<-1000
 rej<-rep(0,num_sim)
 min_p_values<-c();Na<-c()
 
@@ -38,4 +38,4 @@ for(f in 1:num_sim){
 }
 
 print(mean(rej))
-
+# 0.041
