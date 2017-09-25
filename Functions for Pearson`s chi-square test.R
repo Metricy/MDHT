@@ -5,14 +5,9 @@ edf<-function(x,draw=F){
   Fn_x<-c()
   for(i in 1:length(x)){
     Fn_xi<-length(x[which(x<=sort(x)[i])])/length(x)
-    Fn_x<-c(Fn_x,Fn_xi)
-  }
-  if(draw){
-    plot(sort(x),Fn_x,ylab='Fn(x)')
-  }
-  return(Fn_x)
-}
-
+    Fn_x<-c(Fn_x,Fn_xi)}
+  if(draw){plot(sort(x),Fn_x,ylab='Fn(x)')}
+  return(Fn_x)}
 
 # Calcularion of expectations of counts in each category.
 estimates<-function(x,lo,up,sep){
@@ -24,9 +19,7 @@ estimates<-function(x,lo,up,sep){
     expts<-c(expts,expt)}
   expt<-length(x[x>=up])/length(x)
   expts<-c(expts,expt)
-  return(expts)
-}
-
+  return(expts)}
 
 # Test statistic
 Q<-function(lis,lo,up,sep){
@@ -39,9 +32,7 @@ Q<-function(lis,lo,up,sep){
     obs<-estimates(lis[[j]],lo=lo,up=up,sep=sep)*length(lis[[j]])
     s<-sum(((obs-expts)^2)/expts)
     q<-c(q,s)}
-  return(sum(q))
-}
-
+  return(sum(q))}
 
 # Multiple hypothesis testing
 test <- function(lo,up,sep,dat,method='Holm`s step-down') {
@@ -55,5 +46,4 @@ test <- function(lo,up,sep,dat,method='Holm`s step-down') {
     return(list(m,method))
   }
   res<-min(c(na.omit(p_vals)))
-  return(list(res,method))
-}
+  return(list(res,method))}
