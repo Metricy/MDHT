@@ -34,7 +34,7 @@ Q<-function(lis,lo,up,sep){
     q<-c(q,s)}
   return(sum(q))}
 
-# Multiple hypothesis testing
+# Hypothesis testing
 test <- function(lo,up,sep,dat,method='Holm`s step-down') {
   num_categ<-(up-lo)/sep+2
   df<-(length(list(A[,1],B[,1]))-1)*(num_categ-1)
