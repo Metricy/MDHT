@@ -14,7 +14,7 @@ do_test(pcs=T,ks=T,rej,ksrej,num_sim,H0=T)
 # Output:
 
 $`Pearson`s Chi-square`
-[1] 0.04
+[1] 0.041
 
 $`Kolmogorov-Smirnov`
-[1] 0.05
+[1] 0.035
