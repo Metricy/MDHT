@@ -1,9 +1,9 @@
-setwd('D:/Courses of semester V/新建文件夹')
-
 library(MASS)
 num_sim<-1000
 rej<-rep(0,num_sim)
 min_p_values<-c();Na<-c()
+
+ksrej<-rep(0,num_sim)
 
 source('simulate.R')
 source('supplement.R')
@@ -38,7 +38,18 @@ for(f in 1:num_sim){
   }
   if(n[[2]]=='Hochberg`s step-up'){
     if(n[[1]]>=1){rej[f]<-1}}
+  
+  ### Kolmogorov-Smirnov Tests on A & B ###
+  
+  ksps<-c()
+  for(l in 1:type_number){
+    ksp<-ks.test(A[,l],B[,l])$p.value
+    ksps<-c(ksps,ksp)}
+  if(min(c(na.omit(ksps)))<=(0.05/(type_number-sum(is.na(ksps))))){
+    ksrej[f]=1}
 }
 
 print(mean(rej))
+# 1
+print(mean(ksrej))
 # 1
