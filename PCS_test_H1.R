@@ -50,6 +50,6 @@ for(f in 1:num_sim){
 }
 
 print(mean(rej))
-# 1
+# 1 (Pearson`s Chi-square)
 print(mean(ksrej))
-# 1
+# 1 (Kolmogorov-Smirnov)
