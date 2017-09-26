@@ -1,5 +1,6 @@
 source("simulate.R")
 source("supplement.R")
+source("KS_func.R")
 set.seed(1)
 
 sep_ratio <- 0.65
