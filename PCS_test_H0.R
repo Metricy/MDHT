@@ -1,5 +1,3 @@
-setwd('D:/Courses of semester V/新建文件夹')
-
 library(MASS)
 num_sim<-1000
 rej<-rep(0,num_sim)
