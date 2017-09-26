@@ -1,13 +1,20 @@
+set.seed(1)
 library(MASS)
+
 num_sim<-1000
+rej<-rep(0,num_sim)
+ksrej<-rep(0,num_sim)
 
 source('simulate.R')
 source('supplement.R')
 source('Functions for Pearson`s chi-square test.R')
-set.seed(1)
 
+do_test(pcs=T,ks=T,rej,ksrej,num_sim,H0=T)
 
-print(mean(rej))
-# 0.041 (Pearson`s Chi-square)
-print(mean(ksrej))
-# 0.035 (Kolmogorov-Smirnov)
+# Output:
+
+$`Pearson`s Chi-square`
+[1] 0.04
+
+$`Kolmogorov-Smirnov`
+[1] 0.05
