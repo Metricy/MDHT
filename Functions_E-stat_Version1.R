@@ -5,7 +5,7 @@
 # The difference between versions is the estimation of p-value after Monte Carlo
 # test, since there are permutations omitted for testing by Monte Carlo methods.
 # In this version, the "naive" estimator of the p-value of the approximate 
-# permutation test is adopted, where:
+# permutation test is adopted, that is:
 # ^p=(1/B)sum(b=1:B)(I{epsilon_b>=epsilon_observed}).
 
 # Generate random permutation
