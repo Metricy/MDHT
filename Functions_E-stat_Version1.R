@@ -8,14 +8,13 @@
 # permutation test is adopted, where:
 # ^p=(1/B)sum(b=1:B)(I{epsilon_b>=epsilon_observed}).
 
-# Generate random permutation matrix
-rand_permute_mat<-function(dim){
-  null_mat<-matrix(rep(0,dim[1]*dim[2]),nrow=dim[1],ncol=dim[2])
-  ridx<-sample(1:dim[1],dim[2],replace=F)
-  for(i in 1:length(ridx)){
-    null_mat[ridx[i],i]=1}
-  permutation_matrix<-null_mat
-  return(permutation_matrix)
+# Generate random permutation
+permute<-function(dat){
+  org<-1:dim(dat)[1]
+  nxt<-sample(org,dim(dat)[1],replace=F)
+  dat[org,]<-dat[nxt,]
+  new_dat<-dat
+  return(new_dat)
 }
 
 do_test <- function(rej,num_sim,H0,B,
@@ -39,8 +38,7 @@ do_test <- function(rej,num_sim,H0,B,
       m<-c();itr<-B;e_stats<-c()
       for(j in 1:length(size)){m[j]<-sum(size[1:j])}
       for(b in 1:itr){
-        permute_mat<-rand_permute_mat(rep(dim(pooled_0)[1],2))
-        pooled_b<-as.matrix(permute_mat%*%as.matrix(pooled_0))
+        pooled_b<-permute(pooled_0)
         A1_b<-pooled_b[1:m[1],];A2_b<-pooled_b[(m[1]+1):m[2],]
         e_b<-as.numeric(eqdist.e(pooled_b,c(n1,n2)))
         e_stats[b]<-e_b
