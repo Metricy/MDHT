@@ -1,0 +1,132 @@
+\documentclass[12pt,a4paper]{article}
+
+% ------------------------------------------------------------------------
+% Packages
+% ------------------------------------------------------------------------
+\usepackage[body={7.2in, 10in},left=0.8in,right=0.8in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts,graphicx,amsthm,nicefrac,mathtools, verbatim}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{enumitem}
+\usepackage[numbers]{natbib}
+\usepackage{hyperref}
+\usepackage{breqn}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{multirow}
+
+%% If you want to define a new command, you can do it like this:
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\V}{\mathbb{V}}
+
+%% footer anf header
+\pagestyle{fancy}
+\chead{\textsc{\small Report}}
+\cfoot{\textbf{\thepage}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0.5pt}
+
+\begin{document}
+% ------------------------------------------------------------------------
+% Course info
+% ------------------------------------------------------------------------
+\begin{center}
+\textbf{Multivariate Distribution Equality Hypothesis Test}\\
+Kang Gong\\
+Supervisor: Prof. KaWai Tsang\\
+CUHKSZ, Nov 20, 2017
+\end{center}
+\rule{\textwidth}{0.5pt}
+
+\section*{1. Introduction}
+Suppose that $X_1, \dots, X_{m}$ and $Y_1, \dots, Y_{n}$ are independent random samples of $\R^d$-valued random vectors, $d > 1$, with respective distributions $F_1$ and $F_2$. The underlying problem is to test:
+\[
+H_0: F_1 = F_2
+\]
+
+Previously, Sz\'{e}kely and Rizzo (2004) \cite{szekely2004testing} proposed a nonparametric test based on Euclidean distance and and resampling without replacement . As we will show in \textbf{Implement} section, the method they proposed is extremely time-consuming when $n$ and $m$ is large. Worse yet, the method is not sensitive with respect to the difference between two distribution.
+
+Here, we propose two new nonparametric test: one is based on methods of clustering(e.g. $k$-means and Hierarchical tree) and another is based on regression analysis.
+
+\section*{2. Methods}
+\textbf{\large 2.1 Clustering Method \small proposed by Gong Kang, Pan Lishuo, Cheng Yuxiao}\\
+Here we separate the pooled sample space $\mathcal{P} = \{X_1, \dots, X_m, Y_1, \dots, Y_n\}$ into $k$ parts ($\mathcal{P}_1, \dots, \mathcal{P}_k$). For $Z_i \in \mathcal{P}$, let $p_{j(i)}$ be the conditional probability $Pr(Z_i \in \mathcal{P}_j | Z_i \thicksim F_i)$, $i = 1, 2; j = 1, \dots, k$. Under $H_0: F_1 = F_2$, we have:
+\[
+p_{j(1)} = p_{j(2)}, \forall j = 1, \dots, k.
+\]
+
+Thus, the test procedure is firstly to clustering the pooled sample space based on some clustering methods. Let $n_{ij}$ denote the number of the pooled sample points $Z_i \thicksim F_i$ clustered in $\mathcal{P}_j$. Under $H_0$,
+\[
+e_{ij}=E_0[n_{ij}] = \dfrac{\sum_{j=1}^{k}n_{ij}\sum_{i=1}^{2}n_{ij}}{n+m}.
+\]
+Then, we can calculate the Pearson Goodness of Fit test statistics 
+\[
+X^2 = \sum_{i=1}^{2}\sum_{j=1}^{k}\dfrac{(n_{ij} - e_{ij})^2}{e_{ij}} \thicksim \chi^2_{k-1},
+\]
+and reject $H_0$ when $X^2 > \chi^2_{k-1, \alpha}$.
+
+\vspace{0.4cm}
+\noindent\textbf{\large 2.2 Logistic Regression Method \small proposed by Prof. Tsang}\\
+Here we propose two logistic regression method, one is straightforward and the other is modified with resampling.
+
+\vspace{0.2cm}
+\noindent\textbf{Simple version}\\
+We label each $Z_i$ with 0 if $Z_i \thicksim F_1$ or with 1 if $Z_i \thicksim F_2$. Let's say the train ratio is $\gamma \in (0,1)$, then we random select $100\gamma\%$ of $X_i$ and $Y_j$ as the train set to fit a logistic regression. The remaining $100(1-\gamma)\%$ $X_i$ and $Y_j$ are denoted as the test sets $\mathcal{X}_{\text{test}}$ and $\mathcal{Y}_{\text{test}}$ respectively. Then, we use the fitted model to predict $q_i^{x} = Pr(X_i \thicksim F_1 | X_i), X_i \in \mathcal{X}_{\text{test}}$ and $q_j^{y} = Pr(Y_j \thicksim F_1 | Y_j), Y_j \in \mathcal{Y}_{\text{test}}$.
+
+Under $H_0: F_1 = F_2$, $q_i^{x}$ and $q_j^{y}$ would follow the same distribution, and since they are one-dimensional random variable, we can use the existing hypothesis test, e.g. KS test.
+
+\vspace{0.2cm}
+\noindent\textbf{Robust version}\\
+We denote $\mathcal{X}^{(0)}$ and $\mathcal{Y}^{(0)}$ as the original observed the $\{X_1, \dots X_m\}$ and $\{Y_1, \dots Y_n\}$ respectively. Each element in $\mathcal{X}^{(0)}$ or $\mathcal{Y}^{(0)}$ is labeled with 0 or 1 respectively. Then, we fit the logistic regression model based on $\mathcal{X}^{(0)}$ and $\mathcal{Y}^{(0)}$, and estimate $q_i^{x} = Pr(X_i \thicksim F_1 | X_i), X_i \in \mathcal{X}^{(0)}, i = 1, \dots, m$; $q_j^{y} = Pr(Y_j \thicksim F_1 | Y_j), Y_j \in \mathcal{Y}^{(0)}, j = 1, \dots, n$. Based on these estimated probabilities, we can use some one-dimensional test for distribution equality, e.g. KS test, to get the original $p$-value, $p^{(0)}$.
+
+To simulate the distribution of the $p$-value, for $b^* = 1, \dots, b$, we select $n$ elements from the pooled sample $\mathcal{P}$ without replacement to form $\mathcal{X}^{(b^*)}$; and $\mathcal{Y}^{(b^*)} = \{Z_i: Z_i \in \mathcal{P}, Z_i \notin \mathcal{X}^{(b^*)}\}$. Then, we fit the logistic regression model based on $\mathcal{X}^{(b^*)}$ and $\mathcal{Y}^{(b^*)}$, and estimate $q_i^{x} = Pr(X_i \thicksim F_1 | X_i), X_i \in \mathcal{X}^{(b^*)}, i = 1, \dots, m$; $q_j^{y} = Pr(Y_j \thicksim F_1 | Y_j), Y_j \in \mathcal{Y}^{(b^*)}, j = 1, \dots, n$. Therefore, we can calculate the $p$-value $p^{(b^*)}$ based on $q_i^{x}, q_j^{y}$ and some one-dimensional test for distribution equality. 
+
+Therefore, we can reject $H_0$ if $p^{(0)} \notin (p_{\alpha/2}, p_{1-\alpha/2})$, where $p_{\alpha/2}$ and $p_{1-\alpha/2}$ are the $(100\alpha/2)^{\text{th}}$ and $(100(1-\alpha/2))^{\text{th}}$ percentile of $\{p^{(1)},\dots ,p^{(b)}\}$.
+
+\section*{3. Implement}
+Here we simulate some data from different two multivariate norm distribution and estimate the reject ratio of these 3 methods, compared with Sz\'{e}kely and Rizzo's method (2004) \cite{szekely2004testing}. The Clustering method we choose is $k$-means. We set testing time is 1000.
+
+\begin{center}
+\begin{tabular}{|c||c|c|c|c|}
+	\hline 
+	& \multicolumn{4}{c|}{$\mu_1=(0,0.2,0.4,0.6,0.8)$, $\mu_2=(0.1,0.3,0.5,0.7,0.9)$, same $\Sigma$, $k=5$, $\gamma=0.7$}\\ 
+	\hline 
+	& Rizzo's & Clustering &Simple Logistic &Robust Logistic\\ 
+	\hline 
+	n=20, m=20& 0.051 &0.032 &0.801  & 1 \\ 
+	\hline 
+	n=20, m=30&  0.058& 0.033 &0.865&1  \\ 
+	\hline 
+	n=50, m=100&  0.068& 0.061 &1&1  \\ 
+	\hline 
+\end{tabular} 
+\end{center}
+
+\begin{center}
+	\begin{tabular}{|c||c|c|c|c|}
+		\hline 
+		& \multicolumn{4}{c|}{$\mu_1=(0,0.2,0.4,0.6,0.8)$, $\mu_2=(1,-0.5,0,0.5,-1)$, same $\Sigma$, $k=5$, $\gamma=0.7$}\\ 
+		\hline 
+		& Rizzo's & Clustering &Simple Logistic &Robust Logistic\\ 
+		\hline 
+		n=20, m=20& 0.999 &0.961 &1  & 1 \\ 
+		\hline 
+		n=30, m=50&  1& 0.993 &1&1  \\ 
+		\hline 
+		n=50, m=100&  1& 1 &1&1  \\ 
+		\hline 
+	\end{tabular} 
+\end{center}
+
+\renewcommand{\refname}{4. Reference}
+\lhead{}
+\rhead{}
+\bibliographystyle{unsrt}
+\bibliography{Report}
+\end{document}
+
+
